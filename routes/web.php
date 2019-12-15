@@ -12,23 +12,20 @@
 */
 
 Route::view('/', 'welcome');
-
-Route::get('products', 'ProductController@index')->name('products')->middleware(
-	'verified'
-);
-
-Route::get('cart/{id}', 'ProductController@cart')->name('cart')->middleware(
-	'verified'
-);
-
-Route::get('checkout', 'ProductController@checkout')->name('checkout')
-	->middleware('verified');
-
-Route::get('specials', 'ProductController@specials')->middleware('verified');
-
-Route::get('reviews', 'ReviewController@index');
-
-
-Route::get('/home', 'HomeController@index')->name('home');
-
 Auth::routes(['verify' => true]);
+
+Route::middleware(['verified'])->group(
+	function () {
+		Route::get('products', 'ProductController@index')->name('products');
+		Route::get('cart/{id}', 'ProductController@cart')->name('cart');
+		Route::get('checkout', 'ProductController@checkout')->name('checkout');
+		Route::get('specials', 'ProductController@specials');
+		Route::get('reviews', 'ReviewController@index');
+		Route::get('/home', 'HomeController@index')->name('home');
+	}
+);
+
+
+
+
+

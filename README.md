@@ -18,7 +18,9 @@ Again, there isn't anything "tricky" about this repo, the application should run
 - [x] Create a resourceful Controller for an object called Review.
 - [x] Add a route that points to your Review Controller and have it return a new blade view
 - [x] Can you explain to me why the route /specials is failing and fix it.
+    * Basically, the Error Exception Returns MethodNotAllowedHttpException which means you are POSTING to a GET route, and based on the Laravel Docs, You cannot return views via post because of  CSRF protection  
 - [x] What version of Laravel is this application using? 
+    * Laravel 5.8, 
   
 
 ## Simple Tasks
@@ -29,7 +31,7 @@ Again, there isn't anything "tricky" about this repo, the application should run
 - [x] Add User authentication to application, including User Registration and User Login pages.
 - [x] Make it so users must validate their email address before they are able to log in.
 - [x] If you haven't already done so, `seed` your database with data.
-- [x] Create an API Endpoint that generates a JSON response of all Products.
+- [x] Create an API Endpoint that generates a JSON response of all Products. 
 - [x] Create a new branch in your repo and call it `tailwind`. On this branch, upgrade the site to use TailwindCSS.
 
 ## Advanced Tasks
