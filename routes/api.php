@@ -1,6 +1,8 @@
 <?php
 
+use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Resources\Products as ProductResource;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')->get(
+	'/user',
+	function (Request $request) {
+		return $request->user();
+	}
+);
+
+
+Route::get(
+	'/products/list',
+	function () {
+		return new ProductResource(Product::all());
+	}
+);
